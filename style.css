@@ -7,7 +7,7 @@
 
 .header-container{
     padding: 23px;
-    background-color: rgba(128, 128, 128, 0.349);
+    background-color: rgb(243, 243, 243);
     display: flex;
     justify-content: center;
     position: relative;
@@ -45,7 +45,7 @@
 
 #nav a {
     text-decoration: none;
-    color: rgb(71, 71, 71);
+    color: rgba(71, 71, 71, 0.822);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     opacity: 0.7;
     
@@ -64,49 +64,57 @@
 
 #inicio {
     background-color: rgb(226, 174, 3);
-    background-image:  linear-gradient(rgba(7, 7, 7, 0.151), rgba(0, 0, 0, 0.521)), url(imagens/Gemini_Generated_Image_r34bfqr34bfqr34b.jpg);
+    background-image:  linear-gradient(rgba(7, 7, 7, 0.075), rgba(2, 2, 2, 0.616)), url(imagens/banner\ fundo\ solido\ mobile.jpg);
     background-size: cover;
     background-position: center;
-    height: 300px;
+    height: 680px;
 }
 
 #inicio-text{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
     color: #fdfdfd;
-    padding: 40px 20px 40px 20px;
-    gap: 10px;
+    padding: 40px 20px;
+    gap: 12px;
 }
 
 #inicio-text p {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.9em;
+    max-width: 400px;
     
 }
 
 .info {
-    padding-right: 80px;
-    color: rgba(255, 255, 255, 0.747);
+    color: rgba(255, 254, 254, 0.473);
 }
 
 #inicio-button {
-    width: 140px;
+    margin: auto;
+    width: 250px;
     border: none;
-    background-color: rgb(226, 174, 3);
+    border-radius:25px;
+    background-color: rgba(180, 121, 10, 0.733);
     color: white;
-    padding: 14px 0px; 
+    padding: 10px 2px;
     transition: .4s;
    
 }
 
 #inicio-button p {
+    font-size: 1em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 500;
+    
    
 }
 
 #inicio-button:hover {
-    background-color: rgb(207, 143, 5);
-    padding: 17px 0px;
-    width: 150px;
+    background-color: rgba(161, 108, 8, 0.733);
+    padding: 12px 0px;
+    width: 260px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.507);
     
 }
@@ -117,7 +125,7 @@
 
 #sobre {
     background-color: rgb(243, 243, 243);
-    padding: 60px 25px;
+    padding: 80px 25px;
 }
 
 #sobre-container {
@@ -135,6 +143,11 @@
     margin-bottom: 25px;
 }
 
+#sobre-text span {
+    font-weight: bolder;
+    color: #504534;
+}
+
 #sobre-text p {
     font-size: 1em;
     margin-bottom: 25px;
@@ -143,7 +156,7 @@
 
 .link {
     text-align: center;
-    background-color: rgb(73, 49, 10);
+    background-color: rgba(180, 121, 10, 0.733);
     padding: 10px;
     border-radius: 5px;
 }
@@ -162,11 +175,14 @@
     display: block;
     margin: auto;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.151);
 }
 
 #benefits {
-    background-color: rgb(231, 231, 231);
+    background-color: #e0dad2;
     padding: 160px 25px 20px 25px;
+    border-end-end-radius: 25px;
+    border-end-start-radius: 25px;
     
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
