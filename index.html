@@ -23,6 +23,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -223,84 +225,111 @@
 
         <!-- ================= PROCEDIMENTOS ================= -->
 
-        <section id="procedimentos">
+        <!-- ================= PROCEDIMENTOS ================= -->
+<section id="procedimentos">
 
-            <div class="container">
+    <h2 class="titulo">NOSSOS PROCEDIMENTOS</h2>      
 
-                        <h2 class="titulo">
-                            NOSSOS PROCEDIMENTOS
-                        </h2>      
+    <div class="procedimentos-grid">
 
-                <div class="procedimentos-grid">
+        <h4>FACIAL</h4>
 
+        <div class="slider-grid">
+            
+            <!-- Botão Anterior (Seta Esquerda) -->
+            <i class="previous-slide fa-solid fa-angle-left"></i>
 
-                    <!-- PROCEDIMENTO 1 -->
+            <!-- Container do Swiper -->
+            <div class="swiper meu-swiper">
+                <div class="swiper-wrapper" id="procedimentos-faciais">
 
-                    <h4>FACIAL</h4>
-
-                    <article class="procedimentos-card">
-
+                    <!-- Slide 1 -->
+                    <article id="limpeza-facial" class="swiper-slide procedimentos-card">
                         <div class="procedimentos-image">
-
-                            <img
-                                src="imagens/procedimento-facial.jpg">
-
+                            <img src="imagens/procedimento-facial.jpg" alt="Limpeza de pele">
                         </div>
-
                         <div class="procedimentos-content">
-
                             <h3>Limpeza de Pele</h3>
                         </div>
-
                     </article>
 
-
-                    <!-- PROCEDIMENTO 2 -->
-
-                    <h4>CORPORAL</h4>
-
-                    <article class="procedimentos-card">
-
+                    <!-- Slide 2 -->
+                    <article id="massagem" class="swiper-slide procedimentos-card">
                         <div class="procedimentos-image">
-
-                            <img
-                                src="imagens/procedimento-facial2.jpg"
-                                alt="Massagem corporal">
-
+                            <img src="imagens/procedimento-facial2.jpg" alt="Massagem corporal">
                         </div>
-
                         <div class="procedimentos-content">
-
                             <h3>Massagem Modeladora</h3>
-
                         </div>
-
                     </article>
 
-
-                    <!-- PROCEDIMENTO 3 -->
-
-                    <h4>BEM-ESTAR</h4>
-
-                    <article class="procedimentos-card">
-
+                    <!-- Slide 3 -->
+                    <article id="drenagem" class="swiper-slide procedimentos-card">
                         <div class="procedimentos-image">
-
-                            <img
-                                src="imagens/procedimento-facial3.jpg"
-                                alt="Drenagem corporal">
-
+                            <img src="imagens/procedimento-facial3.jpg" alt="Drenagem corporal">
                         </div>
-
                         <div class="procedimentos-content">
-
                             <h3>Drenagem Linfática</h3>
-
                         </div>
                     </article>
+
                 </div>
             </div>
-        </section>
+
+            <!-- Botão Próximo (Seta Direita) -->
+            <i class="next-slide fa-solid fa-angle-right"></i>
+
+        </div>
+
+        <h4>CORPORAL</h4>
+<div class="slider-grid">
+    
+    <!-- Seta Esquerda Exclusiva para Corporal -->
+    <i class="previous-slide-corporal fa-solid fa-angle-left"></i>
+
+    <!-- Container Exclusivo para Corporal -->
+    <div class="swiper swiper-corporal">
+        <div class="swiper-wrapper" id="procedimentos-corporais">
+
+            <!-- Slide 1 -->
+            <article id="corporal-1" class="swiper-slide procedimentos-card">
+                <div class="procedimentos-image">
+                    <img src="imagens/corporal1.jpeg" alt="Massagem relaxante">
+                </div>
+                <div class="procedimentos-content">
+                    <h3>Massagem Relaxante</h3>
+                </div>
+            </article>
+
+            <!-- Slide 2 -->
+            <article id="corporal-2" class="swiper-slide procedimentos-card">
+                <div class="procedimentos-image">
+                    <img src="imagens/corporal2.jpg" alt="Massagem Modeladora">
+                </div>
+                <div class="procedimentos-content">
+                    <h3>Massagem Modeladora</h3>
+                </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article id="corporal-3" class="swiper-slide procedimentos-card">
+                <div class="procedimentos-image">
+                    <img src="imagens/corporal3.png" alt="Drenagem corporal">
+                </div>
+                <div class="procedimentos-content">
+                    <h3>Drenagem Linfática</h3>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <!-- Seta Direita Exclusiva para Corporal -->
+    <i class="next-slide-corporal fa-solid fa-angle-right"></i>
+
+</div>
+                       
+    </section>
     
         <!-- ================= DEPOIMENTOS ================= -->
 
@@ -559,8 +588,12 @@
                     <details class="pergunta">
 
                         <summary>
-                            <i class="fa-regular fa-comments"></i>
-                            Preciso fazer uma avaliação antes?
+                            <div class="start">
+                                <i class="fa-regular fa-comments"></i>
+                                <span>Preciso fazer uma avaliação antes?</span>
+                            </div>
+                            
+                            <i class="fa-solid fa-arrow-right"></i>
                         </summary>
 
                         <p>
@@ -575,8 +608,12 @@
                     <details class="pergunta">
 
                         <summary>
-                            <i class="fa-regular fa-calendar"></i>
-                            Como posso agendar?
+                            <div class="start">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>Como posso agendar?</span>
+                            </div>
+                            
+                            <i class="fa-solid fa-arrow-right"></i>
                         </summary>
 
                         <p>
@@ -590,8 +627,12 @@
                     <details class="pergunta">
 
                         <summary>
-                            <i class="fa-solid fa-spa"></i>
-                            Quais procedimentos vocês oferecem?
+                            <div class="start">
+                                <i class="fa-solid fa-spa"></i>
+                                <span>Quais procedimentos vocês oferecem?</span>
+                            </div>
+                
+                            <i class="fa-solid fa-arrow-right"></i>
                         </summary>
 
                         <p>
@@ -740,5 +781,7 @@
 
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

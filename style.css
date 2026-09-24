@@ -16,7 +16,7 @@
     background: linear-gradient(45deg, #f1eadb, #f8f7f4 );
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 9999;
 }
 
@@ -37,21 +37,147 @@
     margin-top: -10px;
 }
 
+
+/* ================= MENU DESKTOP (Telas Grandes) ================= */
 #nav {
     display: flex;
-    justify-content: space-evenly;
-    gap: 7%;
+    align-items: center;
+    gap: 30px;
 }
 
+#nav a {
+    text-decoration: none;
+    color: #3b2b05;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Efeito de linha charmosa no hover (Desktop) */
+#nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: darkgoldenrod;
+    transition: width 0.3s ease;
+}
+
+#nav a:hover {
+    color: darkgoldenrod;
+}
+
+#nav a:hover::after {
+    width: 100%;
+}
+
+/* Botão do Menu Mobile (Escondido no PC) */
 #menu-mobile {
+    display: none;
+    background: transparent;
     border: none;
-    margin-left: auto;
-    background-color: transparent;
-    color: rgb(212, 168, 22);
+    font-size: 1.2rem;
+    color: darkgoldenrod;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
-#menu-mobile i {
-    font-size: 1.3em;
+
+#menu-mobile:hover {
+    color: darkgoldenrod;
 }
+
+
+/* ================= RESPONSIVIDADE (Telas menores que 768px) ================= */
+
+@media (max-width: 768px) {
+    /* Mostra o botão hambúrguer no celular */
+    #menu-mobile {
+        display: block;
+    }
+
+    /* Transforma o menu num painel suspenso */
+    #nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        gap: 0;
+        padding: 0; /* Removido o padding para não criar espaço sobrando */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid #f0f0f0;
+        
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Estilo das opções no menu celular */
+    #nav a {
+        width: 100%;
+        text-align: center;
+        padding: 14px 0;
+        border-bottom: 1px solid #f0f0f0; /* Borda divisória entre itens */
+        font-size: 1rem;
+    }
+
+    /* REMOVE A SOBRA (BORDA) ABAIXO DO ÚLTIMO ITEM (CONTATO) */
+    #nav a:last-child {
+        border-bottom: none;
+    }
+
+    #nav a::after {
+        display: none; /* Remove a linha do hover no celular */
+    }
+
+    #nav a:active {
+        background-color: #faf7f2;
+    }
+
+    /* Esconde o menu apenas em telas menores */
+    #nav.hide {
+        display: flex;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+    }
+}
+
+/* ================= REGRA DO HIDE CORRIGIDA ================= */
+/* A classe .hide só esconde elementos fora do #nav ou quando for tela mobile */
+.hide:not(#nav) {
+    display: none !important;
+}
+
+@media (min-width: 769px) {
+  /* Força a nav a ficar visível no PC, ignorando a classe .hide do JS */
+  #nav, 
+  #nav.hide {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* Garante que o botão hambúrguer nunca apareça no PC */
+  #menu-mobile {
+    display: none !important;
+  }
+}
+
 
 .hide {
     display: none !important;
@@ -257,6 +383,68 @@
     padding: 20px;
 }
 
+.slider-grid {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.slider {
+    overflow: hidden;
+    width: 290px;
+    border-radius: 10px;
+    margin: auto;
+    grid-column: 2;
+    
+}
+
+.swiper.meu-swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.previous-slide {
+    grid-column: 1 !important;
+}
+
+.previous-slide, .next-slide,
+.previous-slide-corporal, .next-slide-corporal {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: #ffffff;
+    background-color: rgba(184, 135, 11, 0.212);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.previous-slide:hover, .next-slide:hover {
+    background-color: rgba(184, 135, 11, 0.432);
+}
+
+.previous-slide , .previous-slide-corporal {
+    left: 10px;
+}
+
+.next-slide, .next-slide-corporal {
+    right: 10px;
+}
+
+#procedimentos-faciais {
+    display: flex;
+}
+
 #procedimentos h4 {
     margin-top: 70px;
     margin-bottom: 50px;
@@ -265,17 +453,23 @@
 }
 
 .procedimentos-card {
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.123);
-   background-color: #d3bb8923;
-   border-radius: 20px;
-   width: 290px;
-   height: 440px;
-   margin: auto;
-   text-align: center;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.procedimentos-image img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .procedimentos-content h3 {
-    margin-top: 14px;
+    text-align: center;
+    font-size: 1.3em;
+    padding: 18px 15px;
+    width: 290px;
+    margin: auto;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: darkgoldenrod;
 }
@@ -296,24 +490,15 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.123);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.procedimentos-content button {
-    margin-top: 10px;
-    text-decoration: none;
-    color: white;
-    background-color: #3f352bea;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-
-}
 
 #depoimentos {
-    padding: 80px 25px;
+    padding: 0px 25px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr ;
     place-items: center center;
     place-content: center center;
+    margin-bottom: 150px;
 }
 
 #depoimentos h2 {
@@ -455,22 +640,36 @@ position: relative;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#step1, #step3{
-    transform: translateX(-3%);
+#step1, #step3 {
+    margin-left: -3%;
+    animation: flutuar 3s ease-in-out infinite;
 }
 
-#step2{
-    transform: translateX(3%);
+#step2 {
+    animation: flutuar 2.9s ease-in-out infinite;
+    margin-left: 3%;
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0); /* Posição inicial */
+  }
+  50% {
+    transform: translateY(-5px); /* Sobe 15 pixels no meio do caminho */
+  }
 }
 
 .faq {
-    padding: 0px 25px;
+    padding: 0px 12px;
     margin-bottom: 100px;
     
 }
 
-.faq p {
+.faq span {
+    padding-left: 5px;
+    border-left: 2px solid #aa834593;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.9em;
 }
 
 .faq-list {
@@ -479,6 +678,14 @@ position: relative;
     gap: 5px;
     padding: 10px;
     border-radius: 5px;
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .pergunta {
@@ -491,9 +698,15 @@ position: relative;
 }
 
 .pergunta i {
+    padding-right: 5px;
     color: darkgoldenrod;
-    padding-right: 8px;
-    border-right: 1px solid #6d512593;
+    
+}
+
+.pergunta p {
+    padding-top: 10px;
+    font-weight: normal;
+    
 }
 
 #contato {
