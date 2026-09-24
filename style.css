@@ -1,47 +1,62 @@
+/* ================= RESET & BASE ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
+html {
+    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
+body {
+    background-color: #fdfdfd;
+    color: #3b311d;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada no celular */
+}
+
+img, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ================= HEADER & NAV ================= */
 .header-container {
-    position: fixed ;
-    top: 0 ;
-    left: 0 ;
-    width: 100% ;
-    height: 50px ;
-    padding: 0 18px;
-    background: linear-gradient(45deg, #f1eadb, #f8f7f4 );
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0 25px;
+    background: linear-gradient(45deg, #f1eadb, #f8f7f4);
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-
-
 
 .logo h1 {
     color: rgb(218, 186, 7);
     font-size: 1.5em;
-    text-align: center;
+    font-family: Georgia, serif;
 }
 
 .logo h2 {
-    font-size: 1em;
-    color: white;
-    font-family: system-ui, sans-serif;
+    font-size: 0.8em;
+    color: #685749;
     font-weight: 400;
-    text-align: center;
-    margin-top: -10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: -4px;
 }
 
-
-/* ================= MENU DESKTOP (Telas Grandes) ================= */
+/* Menu Desktop */
 #nav {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 30px;
 }
 
@@ -49,14 +64,13 @@
     text-decoration: none;
     color: #3b2b05;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 0.95rem;
     letter-spacing: 0.5px;
     position: relative;
     padding: 5px 0;
     transition: color 0.3s ease;
 }
 
-/* Efeito de linha charmosa no hover (Desktop) */
 #nav a::after {
     content: '';
     position: absolute;
@@ -76,194 +90,92 @@
     width: 100%;
 }
 
-/* Botão do Menu Mobile (Escondido no PC) */
 #menu-mobile {
     display: none;
     background: transparent;
     border: none;
     font-size: 1.2rem;
-    color: darkgoldenrod;
+    color: rgb(226, 185, 82);
     cursor: pointer;
     padding: 5px;
-    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-#menu-mobile:hover {
-    color: darkgoldenrod;
-}
-
-
-/* ================= RESPONSIVIDADE (Telas menores que 768px) ================= */
-
-@media (max-width: 768px) {
-    /* Mostra o botão hambúrguer no celular */
-    #menu-mobile {
-        display: block;
-    }
-
-    /* Transforma o menu num painel suspenso */
-    #nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
-        flex-direction: column;
-        gap: 0;
-        padding: 0; /* Removido o padding para não criar espaço sobrando */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        border-top: 1px solid #f0f0f0;
-        
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-    }
-
-    /* Estilo das opções no menu celular */
-    #nav a {
-        width: 100%;
-        text-align: center;
-        padding: 14px 0;
-        border-bottom: 1px solid #f0f0f0; /* Borda divisória entre itens */
-        font-size: 1rem;
-    }
-
-    /* REMOVE A SOBRA (BORDA) ABAIXO DO ÚLTIMO ITEM (CONTATO) */
-    #nav a:last-child {
-        border-bottom: none;
-    }
-
-    #nav a::after {
-        display: none; /* Remove a linha do hover no celular */
-    }
-
-    #nav a:active {
-        background-color: #faf7f2;
-    }
-
-    /* Esconde o menu apenas em telas menores */
-    #nav.hide {
-        display: flex;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        pointer-events: none;
-    }
-}
-
-/* ================= REGRA DO HIDE CORRIGIDA ================= */
-/* A classe .hide só esconde elementos fora do #nav ou quando for tela mobile */
-.hide:not(#nav) {
-    display: none !important;
-}
-
-@media (min-width: 769px) {
-  /* Força a nav a ficar visível no PC, ignorando a classe .hide do JS */
-  #nav, 
-  #nav.hide {
-    display: flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    position: static !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    pointer-events: auto !important;
-  }
-
-  /* Garante que o botão hambúrguer nunca apareça no PC */
-  #menu-mobile {
-    display: none !important;
-  }
-}
-
-
-.hide {
-    display: none !important;
-}
-
+/* ================= SEÇÃO INÍCIO (HERO) ================= */
 #inicio {
-    margin-top: 50px;
-    background-color: rgb(226, 174, 3);
-    background-image:  linear-gradient(rgba(7, 7, 7, 0.075), rgba(2, 2, 2, 0.616)), url(imagens/banner\ fundo\ solido\ mobile.jpg);
+    margin-top: 60px;
+    background: linear-gradient(rgba(7, 7, 7, 0.2), rgba(2, 2, 2, 0.65)), url('imagens/banner fundo solido mobile.jpg');
     background-size: cover;
     background-position: center;
-    height: 680px;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#inicio-text{
+#inicio-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     color: #fdfdfd;
     padding: 40px 20px;
-    gap: 12px;
+    gap: 18px;
+    max-width: 800px;
 }
 
 #inicio-text p {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 0.9em;
-    max-width: 400px;
-    
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.5;
 }
 
 .info {
-    color: rgba(255, 254, 254, 0.473);
+    color: rgba(255, 254, 254, 0.8);
 }
 
 #inicio-button {
-    margin: auto;
-    width: 200px;
+    margin-top: 10px;
+    width: auto;
+    min-width: 200px;
     border: none;
-    border-radius:25px;
+    border-radius: 25px;
     color: rgb(112, 76, 9);
-    background: linear-gradient(40deg ,rgba(233, 210, 169, 0.952), rgb(235, 224, 212));
-    padding: 12px 2px;
-    transition: .4s;
-   
+    background: linear-gradient(40deg, rgba(233, 210, 169, 0.95), rgb(235, 224, 212));
+    padding: 12px 30px;
+    cursor: pointer;
+    transition: all .3s ease;
 }
 
 #inicio-button p {
-    font-size: 1.2em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 500;
-    
-   
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 #inicio-button:hover {
-    color: rgb(117, 79, 8);
-    background: linear-gradient(40deg ,rgba(230, 203, 159, 0.952), rgb(235, 221, 207));
-    padding: 14px 2px;
-    width: 210px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.349);
-    
+    background: linear-gradient(40deg, rgba(230, 203, 159, 0.95), rgb(235, 221, 207));
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-.dest {
-    font-weight: 500;
-}
-
+/* ================= SEÇÃO SOBRE ================= */
 #sobre {
-    background-color: rgb(243, 243, 243);
-    padding: 80px 25px;
+    background-color: #f8f8f8;
+    padding: 130px 20px;
 }
 
 #sobre-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 180px;
-    gap: 70px;
-    position: relative;
-
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
 #sobre-text h2 {
     font-size: 2em;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 #sobre-text span {
@@ -274,140 +186,119 @@
 #sobre-text p {
     font-size: 1em;
     margin-bottom: 25px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
 }
 
 .link {
+    display: inline-block;
     text-align: center;
-    background-color: rgba(180, 121, 10, 0.733);
-    padding: 10px;
+    background-color: rgba(180, 121, 10, 0.85);
+    padding: 12px 24px;
     border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: auto;
+    display: block;
+}
+
+.link:hover {
+    background-color: darkgoldenrod;
 }
 
 .text-link {
     text-decoration: none;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #fdfdfd;
-    padding: 10px;
+    font-weight: 500;
 }
 
 #sobre img {
-    position: absolute;
-    transform: translate(-3%, -3%);
-    width: 350px;
-    display: block;
-    margin: auto;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.151);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    animation: flutuar 4s ease-in-out infinite;
 }
 
+/* ================= BENEFÍCIOS ================= */
 #benefits {
     background-color: #e0dad26b;
-    padding: 160px 25px 20px 25px;
-    border-end-end-radius: 25px;
-    border-end-start-radius: 25px;
+    padding: 110px 20px 130px;
+    border-radius: 0 0 25px 25px;
     
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 auto;
 }
 
 #benefits h2 {
     margin-bottom: 20px;
     color: #3b311d;
-  
-}
-
-#benefits span {
-    font-weight: bolder;
-    color: #3b311d;
-  
 }
 
 .benefits-grid {
-    margin-top: 40px;
+    max-width: 1500px;
+    margin: auto;
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr ;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
     justify-items: center;
-    align-content: center;
-    
-    text-align: center;
-    gap: 15px;
-    
-
-    padding: 50px 0px;
-    border-radius: 10px;
-    
-    
-}
-
-.benefit-icon {
-    color: #4cada0;
-    text-align: center;
-}
-
-
-
-.benefit-icon h3{
-    font-size: 0.8em;
-
 }
 
 .benefit-card {
-    
-    padding-bottom: 18px;
+    background-color: #fdfdfcbd;
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    text-align: start;
-    align-items: start;
-    border-bottom: 2px solid #4cada02c;
-    width: 280px;
+    gap: 10px;
+    border-bottom: 3px solid #4cada05e;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
-.benefit-card p{
-   font-size: 0.9em;
-   width: 210px;
-   font-weight: 500;
-   color: #41382ae1;
+.benefit-icon i{
+    color: #4cada0;
+}
+
+.benefit-card p {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #41382ae1;
+}
+
+/* ================= PROCEDIMENTOS & SLIDERS ================= */
+#procedimentos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
 }
 
 .titulo {
-    
     text-align: center;
-    margin-top: 70px;
-    font-size: 1.7em;
+    margin-top: 40px;
+    font-size: 1.8em;
     font-weight: bolder;
-    color: #3b311d;
-    padding: 20px;
+    color: #57483d;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#procedimentos h4 {
+    margin: 40px 0 20px 0;
+    font-weight: bolder;
+    color: #68574979;
+    font-size: 1.2em;
 }
 
 .slider-grid {
     display: flex;
     align-items: center;
-    gap: 15px;
     position: relative;
     width: 100%;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 }
 
-.slider {
-    overflow: hidden;
-    width: 290px;
-    border-radius: 10px;
-    margin: auto;
-    grid-column: 2;
-    
-}
-
-.swiper.meu-swiper {
+.swiper {
     width: 100%;
-    overflow: hidden;
-}
-
-.previous-slide {
-    grid-column: 1 !important;
+    padding: 10px 5px;
 }
 
 .previous-slide, .next-slide,
@@ -417,11 +308,11 @@
     transform: translateY(-50%);
     z-index: 10;
     cursor: pointer;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #ffffff;
-    background-color: rgba(184, 135, 11, 0.212);
-    width: 35px;
-    height: 35px;
+    background-color: rgba(184, 135, 11, 0.6);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -429,178 +320,116 @@
     transition: background-color 0.3s;
 }
 
-.previous-slide:hover, .next-slide:hover {
-    background-color: rgba(184, 135, 11, 0.432);
+.previous-slide:hover, .next-slide:hover,
+.previous-slide-corporal:hover, .next-slide-corporal:hover {
+    background-color: darkgoldenrod;
 }
 
-.previous-slide , .previous-slide-corporal {
-    left: 10px;
-}
+.previous-slide, .previous-slide-corporal { left: 5px; }
 
-.next-slide, .next-slide-corporal {
-    right: 10px;
-}
-
-#procedimentos-faciais {
-    display: flex;
-}
-
-#procedimentos h4 {
-    margin-top: 70px;
-    margin-bottom: 50px;
-    font-size: 1.2em;
-    color: #3b311d;
-}
+.next-slide, .next-slide-corporal { right: 5px; }
 
 .procedimentos-card {
-    height: auto;
-    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .procedimentos-image img {
     width: 100%;
-    height: 390px;
+    height: 320px;
     object-fit: cover;
-    border-radius: 8px;
+    display: block;
 }
 
 .procedimentos-content h3 {
     text-align: center;
-    font-size: 1.3em;
-    padding: 18px 15px;
-    width: 290px;
-    margin: auto;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.1em;
+    padding: 15px;
     color: darkgoldenrod;
 }
 
-
-.procedimentos-card img {
-    width: 290px;
-    display: block;
-    margin: auto;
-    border-radius: 5px;
-}
-
-
-#procedimentos h4{
-    margin-left: 25px;
-    font-weight: bolder;
-    color: #68574971;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-
+/* ================= DEPOIMENTOS ================= */
 #depoimentos {
-    padding: 0px 25px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr ;
-    place-items: center center;
-    place-content: center center;
-    margin-bottom: 150px;
-}
-
-#depoimentos h2 {
-    margin-bottom: 20px;
-    font-size: 2.1em;
-
+    max-width: 1200px;
+    margin: 60px auto 130px;
+    padding: 0 20px;
 }
 
 #depoimentos h3 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 500;
-    font-size: 1.7em;
+    font-size: 1.6em;
     text-align: center;
-
-}
-
-#depoimentos p {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
-
+    margin-bottom: 20px;
 }
 
 #google-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 8px;
+    margin-bottom: 35px;
 }
 
-.logo-google {
-    margin-top: 5px;
-    margin-bottom: 35px;
+#google-info h3, #depoimentos p{
+    color: #030303;
 }
 
 
 
 .avaliacao-grid {
     display: grid;
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .avaliacao {
-background-color: rgba(245, 245, 245, 0.493);
-padding: 35px 25px;
-border-radius: 15px;
-position: relative;
-
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
 .icone-google {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100% , 100%);
+    top: 20px;
+    right: 20px;
 }
 
 .client {
     display: grid;
     grid-template-columns: 50px auto;
-    grid-template-rows: 25px 25px;
-}
-
-.client-avatar {
-    grid-row: 1/3;
-    grid-column: 1;
-    
+    row-gap: 2px;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .client-name {
-    grid-row: 1;
-    grid-column: 2;
-    font-weight: 500;
-    
-}
+     font-weight: 600; 
+    }
 
 .client-data {
-    grid-row: 2;
-    grid-column: 2;
-    color: rgba(7, 7, 7, 0.281);
-    font-weight: 500;
-}
+     font-size: 0.85em; 
+     grid-column: 2;
+     font-weight: 600;
+    }
 
+    .client-data p{
+     color: rgba(131, 131, 131, 0.596) !important;
+    }
+
+/* ================= PASSO A PASSO (HOW) ================= */
 .how {
-    
-    height: auto;
-    padding: 1px 25px 70px 25px;
-    margin-bottom: 100px;
-    background: linear-gradient(45deg, #d4be97, #ebe6da );
-    background-color: #e2d2b1;
-}
-
-#textos-how {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 40px;
+    padding: 80px 20px 140px;
+    margin-bottom: 120px;
+    background: linear-gradient(45deg, #d4be97, #ebe6da);
 }
 
 #how {
-    color: darkgoldenrod ;
+    color: darkgoldenrod;
     padding: 0px;
+    
 }
 
 .subtitulo {
@@ -610,8 +439,17 @@ position: relative;
     transform: translateX(3%);
 }
 
+#textos-how {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
 .steps {
+    max-width: 900px;
+    margin: 0 auto;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
 }
 
@@ -623,73 +461,50 @@ position: relative;
 }
 
 .step-number {
-    font-size: 2.2em;
+    font-size: 2em;
     font-weight: bolder;
     color: darkgoldenrod;
+    margin-bottom: 10px;
+    font-family:'Times New Roman', Times, serif;
 }
 
-.step h3{
-    font-weight: 500;
-    color: rgb(59, 43, 5);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.step p{
-    font-weight: 400;
-
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#step1, #step3 {
-    margin-left: -3%;
+#step1, #step2, #step3 {
     animation: flutuar 3s ease-in-out infinite;
 }
 
-#step2 {
-    animation: flutuar 2.9s ease-in-out infinite;
-    margin-left: 3%;
-}
+#step2 { animation-delay: 0.5s; }
 
 @keyframes flutuar {
-  0%, 100% {
-    transform: translateY(0); /* Posição inicial */
-  }
-  50% {
-    transform: translateY(-5px); /* Sobe 15 pixels no meio do caminho */
-  }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
 }
 
+/* ================= FAQ ================= */
 .faq {
-    padding: 0px 12px;
+    padding: 0px 25px;
     margin-bottom: 100px;
     
 }
 
-.faq span {
-    padding-left: 5px;
-    border-left: 2px solid #aa834593;
+.faq p {
+    margin-top: 8px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 0.9em;
 }
 
 .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 10px;
+    gap: 8px;
+    
     border-radius: 5px;
 }
 
-summary {
-    list-style: none;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+.start {
+    display: inline-block;
 }
 
 .pergunta {
-    background: linear-gradient(45deg, #f1e5c5b2, #f5efe4b2);
+    background: linear-gradient(45deg, #eee5ccb2, #f8f2e7b2);
     color: #503b1a;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 15px;
@@ -697,21 +512,37 @@ summary {
     border-radius: 5px;
 }
 
-.pergunta i {
-    padding-right: 5px;
-    color: darkgoldenrod;
-    
+.pergunta span {
+    font-size: 1em;
+    padding-left: 5px;
+    border-left: 1px solid #88683473;
 }
 
-.pergunta p {
-    padding-top: 10px;
-    font-weight: normal;
-    
+.pergunta i {
+    color: darkgoldenrod;
+    padding-right: 5px;
 }
+
+summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #503b1a;
+    list-style: none;
+}
+
+
+details p {
+    padding-top: 4px;
+    color: #302203a6;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* ================= CONTATO ================= */
 
 #contato {
     padding: 0px 25px;
-    margin-bottom: 100px;
+    margin-bottom: 120px;
 }
 
 #contato h1 {
@@ -719,16 +550,15 @@ summary {
     font-size: 1em;
     font-weight: 500;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#contato h1 {
-    display: flex;
+        display: flex;
     place-items: center center;
     gap: 7px;
+    margin-bottom: 8px;
 }
 
+
+
 #barra {
-    
     display: inline-block;
     width: 40px;
     background-color: darkgoldenrod;
@@ -741,6 +571,7 @@ summary {
     font-weight: bolder;
     color: #3b311d;
     padding: 20px 0px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .contato-item {
@@ -783,137 +614,148 @@ summary {
 }
 
 #localizacao p {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgba(0, 0, 0, 0.5);
-    text-align: center;
+    padding: 10px;
 }
 
-#map-box{
+#map-box {
     background-color: #f3f3f3;
     border-radius: 10px;
-    margin: 50px auto 0px auto;
+    overflow: hidden;
     width: 100%;
     height: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-#map-box iframe{
+#map-box iframe {
     width: 100%;
     height: 100%;
-
+    border: 0;
 }
 
-
-
-
-
+/* ================= FOOTER ================= */
 .footer {
     background-color: rgb(42, 42, 42);
     color: rgba(255, 255, 255, 0.7);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-        "Open Sans", "Helvetica Neue", sans-serif;
+    padding: 50px 20px 30px;
 }
 
 .footer-container {
-        grid-template-columns: 1fr 1fr ;
-        gap: 40px 25px;
-        padding: 45px 25px 30px;
-    }
-
-    .footer .logo {
-        grid-column: 1 / -1;
-    }
-
-
-/* LOGO */
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 35px;
+}
 
 .footer .logo h1 {
-    margin: 0;
-
     font-family: Georgia, serif;
-    font-size: 38px;
+    font-size: 32px;
     color: rgb(221, 174, 52);
 }
 
 .footer .logo h2 {
-    margin: -5px 0 25px;
-
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 4px;
     color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 20px;
 }
 
-/* REDES SOCIAIS */
-
-.social {
-    display: flex;
-    gap: 12px;
-}
+.social { display: flex; gap: 12px; }
 
 .social a {
-    width: 40px;
-    height: 40px;
-
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid rgba(221, 174, 52, 0.5);
     border-radius: 50%;
-
     color: rgb(221, 174, 52);
-    font-size: 17px;
-
+    text-decoration: none;
     transition: 0.3s;
 }
 
 .social a:hover {
     background-color: rgb(221, 174, 52);
     color: rgb(42, 42, 42);
-    transform: translateY(-3px);
 }
 
-/* COLUNAS */
+.footer-column { display: flex; flex-direction: column; gap: 10px; }
+.footer-column h3 { color: rgb(221, 174, 52); font-size: 14px; text-transform: uppercase; margin-bottom: 5px; }
+.footer-column a { color: rgba(255, 255, 255, 0.65); text-decoration: none; transition: 0.3s; }
+.footer-column a:hover { color: rgb(221, 174, 52); }
 
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
+/* ================= MEDIA QUERIES (RESPONSIVIDADE MÁXIMA) ================= */
+
+/* CELULARES E TABLETS (Até 768px) */
+@media (max-width: 768px) {
+    #menu-mobile {
+        display: block;
+    }
+
+    #nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid #f0f0f0;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: all 0.3s ease;
+    }
+
+    #nav a {
+        width: 100%;
+        text-align: center;
+        padding: 14px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    #nav a:last-child {
+        border-bottom: none;
+    }
+
+    #nav a::after {
+        display: none;
+    }
+
+    /* Ocultar quando tiver a classe hide */
+    #nav.hide {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+    }
+
+    #sobre img {
+        position: static;
+        transform: none;
+    }
 }
 
-.footer-column h3 {
-    margin: 0 0 12px;
+/* DESKTOP & MONITORES GRANDES (A partir de 769px) */
+@media (min-width: 769px) {
+    #nav, #nav.hide {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        position: static !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        pointer-events: auto !important;
+    }
 
-    color: rgb(221, 174, 52);
-    font-size: 14px;
-    font-weight: 500;
+    #menu-mobile {
+        display: none !important;
+    }
 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.footer-column a,
-.footer-column span {
-    color: rgba(255, 255, 255, 0.65);
-    text-decoration: none;
-    font-size: 14px;
-
-    transition: 0.3s;
-}
-
-.footer-column a:hover {
-    color: rgb(221, 174, 52);
-    padding-left: 4px;
-}
-
-/* TEXTOS FINAIS */
-
-.footer-column p {
-    margin: 15px 0 0;
-
-    font-size: 12px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.45);
+    #sobre-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
