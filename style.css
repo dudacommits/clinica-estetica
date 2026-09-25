@@ -202,7 +202,7 @@ img, iframe {
 }
 
 .link:hover {
-    background-color: darkgoldenrod;
+    background-color: rgb(218, 163, 24);
 }
 
 .text-link {
@@ -299,11 +299,21 @@ img, iframe {
     position: relative;
     width: 100%;
     margin-bottom: 40px;
+    
+}
+
+.swiper-slide {
+    width: 103%;
+   
+    padding: 40px 30px !important;
+    
 }
 
 .swiper {
     width: 100%;
     padding: 10px 5px;
+    overflow: visible;
+    
 }
 
 .previous-slide, .next-slide,
@@ -337,8 +347,22 @@ img, iframe {
 .procedimentos-card {
     background: #ffffff;
     border-radius: 10px;
+    overflow: visible;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-inner {
+    background: #ffffff;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-inner:hover {
+    transform: scale(1.04);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 .procedimentos-image img {
@@ -634,6 +658,9 @@ details p {
     margin: 3px 0 0;
     font-size: 17px;
     font-weight: bold;
+
+    text-decoration: none;
+    color: color: #503b1ab2;;
 }
 
 #localizacao p {
