@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loop: true,
       grabCursor: true,
       autoplay: {
-        delay: 4000, // 8 segundos
+        delay: 6000, // 8 segundos
         disableOnInteraction: false,
       },
       breakpoints: {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loop: true,
       grabCursor: true,
       autoplay: {
-        delay: 5000, // 8 segundos
+        delay: 7000, // 8 segundos
         disableOnInteraction: false,
       },
       breakpoints: {

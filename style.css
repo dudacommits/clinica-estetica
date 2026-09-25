@@ -103,12 +103,13 @@ img, iframe {
 /* ================= SEÇÃO INÍCIO (HERO) ================= */
 #inicio {
     margin-top: 60px;
-    background: linear-gradient(rgba(7, 7, 7, 0.2), rgba(2, 2, 2, 0.65)), url('imagens/banner fundo solido mobile.jpg');
+    background: linear-gradient(rgba(180, 97, 19, 0.788), transparent, transparent), url('imagens/banner2.png');
     background-size: cover;
-    background-position: center;
-    min-height: calc(100vh - 60px);
+    background-position: bottom;
+    min-height: 93vh;
+    
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
@@ -169,7 +170,7 @@ img, iframe {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 80px;
     align-items: center;
 }
 
@@ -226,6 +227,10 @@ img, iframe {
     border-radius: 0 0 25px 25px;
     
     margin: 0 auto;
+}
+
+#benefits-text {
+    text-align: center;
 }
 
 #benefits h2 {
@@ -469,31 +474,41 @@ img, iframe {
 }
 
 #step1, #step2, #step3 {
-    animation: flutuar 3s ease-in-out infinite;
+    animation: flutuar 3.5s ease-in-out infinite;
 }
 
 #step2 { animation-delay: 0.5s; }
 
 @keyframes flutuar {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    50% { transform: translateY(-8px); }
 }
 
 /* ================= FAQ ================= */
 .faq {
-    padding: 0px 25px;
+    padding: 0px 10px;
     margin-bottom: 100px;
     
 }
 
 .faq p {
+
+    font-weight: 500;
     margin-top: 8px;
+    
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.faq-title {
+    margin: 0px 15px 40px;
+    text-align: center;
+}
+
 .faq-list {
+    margin: auto;
     display: flex;
     flex-direction: column;
+    max-width: 900px;
     gap: 8px;
     
     border-radius: 5px;
@@ -510,6 +525,10 @@ img, iframe {
     padding: 15px;
     font-weight: 500;
     border-radius: 5px;
+    min-width: 360px;
+    max-width: 900px;
+    
+    
 }
 
 .pergunta span {
@@ -542,12 +561,15 @@ details p {
 
 #contato {
     padding: 0px 25px;
-    margin-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto 120px;
 }
 
 #contato h1 {
     color: darkgoldenrod;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 500;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         display: flex;
@@ -572,6 +594,7 @@ details p {
     color: #3b311d;
     padding: 20px 0px;
     font-family: 'Times New Roman', Times, serif;
+    max-width: 600px;
 }
 
 .contato-item {
@@ -740,6 +763,21 @@ details p {
 
 /* DESKTOP & MONITORES GRANDES (A partir de 769px) */
 @media (min-width: 769px) {
+
+    p {
+        font-size: 1.1em;
+    }
+
+    #inicio {
+    
+    align-items: center;
+    background: linear-gradient(to right,rgba(180, 97, 19, 0.582), transparent), url('imagens/banner2pc.png');
+    background-position: right;
+    background-size: cover;
+    min-height: 70vh;
+    
+}
+
     #nav, #nav.hide {
         display: flex !important;
         opacity: 1 !important;
@@ -758,4 +796,60 @@ details p {
     #sobre-container {
         grid-template-columns: 1fr 1fr;
     }
+
+    #benefits {
+    padding: 180px 20px 210px;
+}
+
+    #benefits-text {
+    margin-bottom: 60px;
+}
+
+    #benefits h2 {
+        font-size: 2em;
+    }
+    
+    #benefits p {
+        font-size: 1.3em;
+        font-weight: 400;
+    }
+
+    .titulo {
+        font-size: 2.4em;
+    }
+
+    #procedimentos h4 {
+    margin: 60px 0 30px 0;
+    font-weight: bolder;
+    color: #68574979;
+    font-size: 1.2em;
+}
+
+.how {
+    padding: 140px 20px 200px;
+    margin-bottom: 120px;
+    background: linear-gradient(45deg, #d4be97, #ebe6da);
+}
+
+.steps {
+    max-width: 1300px;
+    height: 190px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.faq {
+    margin-bottom: 150px;
+}
+
+#contato h1 {
+    font-size: 1.5em;
+}
+
+#contato h2 {
+    font-size: 2.5em;
+    
+}
 }
